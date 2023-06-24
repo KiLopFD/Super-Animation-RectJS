@@ -7,9 +7,9 @@ import { fadeIn, navVariants, slideIn, staggerContainer } from "../services/moti
 const Header = ({ setMode, }) => {
   let [useFocus, setFocus] = useState('')
   // When Scroll, I Can Measure Height:
-  window.addEventListener('scroll', () => {
-    console.log(window.pageYOffset)
-  })
+  // window.addEventListener('scroll', () => {
+  //   console.log(window.pageYOffset)
+  // })
   return <>
     <div className="bg-blue-800 shadow-xl sticky left-0 top-0 z-50">
       <div className="header grid grid-cols-12 items-center px-2 sm:px-2 md:px-0 lg:px-0 container mx-auto">

@@ -21,6 +21,7 @@ const Home = () => {
                   variants={textVariant(1.35)}
                   initial='hidden'
                   whileInView='show'
+                  viewport={{once: true}}
                 >
                   C++ là nền tảng quan trọng của mọi lập trình viên
                 </m.p>
@@ -28,12 +29,14 @@ const Home = () => {
                   variants={textVariant(1.45)}
                   initial='hidden'
                   whileInView='show'
+                  viewport={{ once: true }}
                 >Bạn không được bỏ cuộc chúng tôi luôn đồng hành cùng bạn</m.p>
                 <div className="group-btn pt-5 flex flex-wrap gap-5 items-center lg:justify-start md:justify-center sm:justify-center justify-center">
                   <m.div
                     variants={textVariant(1.45)}
                     initial='hidden'
                     whileInView='show'
+                    viewport={{ once: true, amount: 0.8 }}
                   >
                     <button className='font-sans font-bold px-6 py-6 border-4 rounded-xl border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 lg:text-5xl md:text-5xl sm:text-3xl text-3xl min-w-max'
                     >Học Ngay</button>
@@ -43,6 +46,7 @@ const Home = () => {
                     variants={textVariant(1.55)}
                     initial='hidden'
                     whileInView='show'
+                    viewport={{ once: true, amount: 0.8 }}
                   >
                     <svg className='w-full h-auto pt-3 text-center' width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <rect x="3" y="5" width="34" height="28" rx="2" stroke="#fafafa" strokeWidth="2" />
@@ -56,6 +60,7 @@ const Home = () => {
                     variants={textVariant(1.65)}
                     initial='hidden'
                     whileInView='show'
+                    viewport={{ once: true, amount: 0.8 }}
                   >Website học code hoàn toàn miễn phí</m.p>
                 </div>
               </div>
@@ -66,6 +71,7 @@ const Home = () => {
                 variants={fadeIn('left', 'spring', 0.95, 0.9)}
                 initial='hidden'
                 whileInView='show'
+                viewport={{ once: true, amount: 0.8 }}
               >
                 <m.div className='lg:w-[550px] lg:h-[450px] md:w-[550px] md:h-[450px] sm:w-[550px] sm:h-[450px] w-[250px] h-[200px] mx-auto pt-3 sm:pt-10 md:pt-10 lg:pt-10 bg-gradient-to-r from-violet-500 to-fuchsia-500 border-4 border-blue-800'
                   variants={{
@@ -97,7 +103,8 @@ const Home = () => {
                         restSpeed: 0.0005,
                         repeatType: "reverse",
                         repeat: Infinity,
-                      }}
+                  }}
+                  
                 >
                   <svg className='hidden sm:block md:block lg:block mx-auto' width="303" height="325" viewBox="0 0 303 325" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M299.043 243.07C301.42 239.156 302.897 234.745 302.897 230.785V93.3082C302.897 89.3477 301.422 84.9383 299.044 81.0239L151.448 162.047L299.043 243.07Z" fill="#00599C" />
@@ -125,7 +132,7 @@ const Home = () => {
           </div>
         </div>
 
-        <svg className='w-full left-0 h-auto block' width="1669" height="344" viewBox="0 0 1669 344" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='w-full left-0 h-auto block mb-24' width="1669" height="344" viewBox="0 0 1669 344" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M0 288L34.7708 240C69.5417 192 139.083 96 208.625 96C278.167 96 347.708 192 417.25 234C486.792 276 556.333 264 625.875 222C695.417 180 764.958 108 834.5 114C904.042 120 973.583 204 1043.13 258C1112.67 312 1182.21 336 1251.75 342C1321.29 348 1390.83 336 1460.38 312C1529.92 288 1599.46 252 1634.23 234L1669 216V0H1634.23C1599.46 0 1529.92 0 1460.38 0C1390.83 0 1321.29 0 1251.75 0C1182.21 0 1112.67 0 1043.13 0C973.583 0 904.042 0 834.5 0C764.958 0 695.417 0 625.875 0C556.333 0 486.792 0 417.25 0C347.708 0 278.167 0 208.625 0C139.083 0 69.5417 0 34.7708 0H0V288Z" fill="#1D4ED8" />
         </svg>
                      
