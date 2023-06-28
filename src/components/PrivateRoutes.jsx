@@ -1,4 +1,6 @@
 import React from 'react'
+import { memo } from 'react'
+
 
 const PrivateRoutes = () => {
   return (
@@ -6,4 +8,4 @@ const PrivateRoutes = () => {
   )
 }
 
-export default PrivateRoutes
+export default memo(PrivateRoutes)

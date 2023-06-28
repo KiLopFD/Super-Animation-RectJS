@@ -164,10 +164,8 @@ export const footerVariants = {
 export const triggerShow = (duration) => ({
     show: {
         opacity: 1, scale: 1, transition: {
-            type:'tween',
-            velocity: 0.002,
             duration: duration,
-            delay: 0.25,
+            delay: 0.5,
         }
     },
     hidden: { opacity: 0, scale: 0 },

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense,memo } from 'react'
 import { motion as m } from 'framer-motion'
 import { fadeIn, textVariant, textVariant2, triggerShow } from '../services/motion'
 import { Courses } from '.'
@@ -6,12 +6,7 @@ import { Courses } from '.'
 const Home = () => {
   return (
     <>
-      <m.div className="Home"
-        variants={triggerShow(0.5)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.8 }}
-
+      <div className="Home"
       >
         <div className='bg-blue-700'>
           <div className="grid grid-cols-12 container mx-auto lg:pt-20 md:pt-20 sm:pt-20 pt-5">
@@ -140,9 +135,9 @@ const Home = () => {
           <Courses/>
         </Suspense>
 
-      </m.div>
+      </div>
     </>
   )
 }
 
-export default Home
+export default memo(Home)

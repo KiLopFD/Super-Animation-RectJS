@@ -1,11 +1,17 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { animate, motion as m } from "framer-motion";
 import { fadeIn, navVariants, slideIn, staggerContainer } from "../services/motion";
+import { memo } from "react";
 
 
 const Header = ({ setMode, }) => {
-  let [useFocus, setFocus] = useState('')
+  let location = useLocation();
+  let [useFocus, setFocus] = useState('');
+  useMemo(() => {
+    setFocus(location.pathname)
+  },[location.pathname])
+
   // When Scroll, I Can Measure Height:
   // window.addEventListener('scroll', () => {
   //   console.log(window.pageYOffset)
@@ -21,7 +27,7 @@ const Header = ({ setMode, }) => {
           initial='hidden'
           animate='show'
         >
-          <NavLink to='/' >Logo</NavLink>
+          <Link to='/' >Logo</Link>
         </m.div>
 
         <div className="col-span-6 flex justify-center sm:hidden lg:flex md:flex hidden">
@@ -31,8 +37,8 @@ const Header = ({ setMode, }) => {
             animate='show'
             onClick={() => { setFocus('') }}
           >
-            <NavLink to='/' className='px-4 py-8 lg:text-xl  font-semibold font-sans hover:text-amber-300' >Trang Chủ</NavLink>
-            {useFocus === '' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
+            <Link to='/' className='px-4 py-8 lg:text-xl  font-semibold font-sans hover:text-amber-300' >Trang Chủ</Link>
+            {useFocus === '/' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
               variants={{
                 hidden: {
                   width: 0
@@ -60,8 +66,8 @@ const Header = ({ setMode, }) => {
             animate='show'
             onClick={() => { setFocus('courses') }}
           >
-            <NavLink to='/courses' className='px-4 py-8 lg:text-xl  font-semibold font-sans' >Khóa Học</NavLink>
-            {useFocus === 'courses' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
+            <Link to='/courses' className='px-4 py-8 lg:text-xl  font-semibold font-sans' >Khóa Học</Link>
+            {useFocus === '/courses' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
               variants={{
                 hidden: {
                   width: 0
@@ -90,8 +96,8 @@ const Header = ({ setMode, }) => {
             animate='show'
             onClick={() => { setFocus('about') }}
           >
-            <NavLink to='/about' className='px-4 py-8 lg:text-xl  font-semibold font-sans'>Giới Thiệu</NavLink>
-            {useFocus === 'about' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
+            <Link to='/about' className='px-4 py-8 lg:text-xl  font-semibold font-sans'>Giới Thiệu</Link>
+            {useFocus === '/about' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
               variants={{
                 hidden: {
                   width: 0
@@ -120,8 +126,8 @@ const Header = ({ setMode, }) => {
             animate='show'
             onClick={() => { setFocus('contact') }}
           >
-            <NavLink to='/contact' className='px-4 py-8 lg:text-xl  font-semibold font-sans'>Liên Hệ</NavLink>
-            {useFocus === 'contact' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
+            <Link to='/contact' className='px-4 py-8 lg:text-xl  font-semibold font-sans'>Liên Hệ</Link>
+            {useFocus === '/contact' && (<m.div className="absolute origin-right h-1 bg-slate-200 top-9 rounded-2xl"
               variants={{
                 hidden: {
                   width: 0
@@ -151,14 +157,14 @@ const Header = ({ setMode, }) => {
             initial='hidden'
             animate='show'
           >
-            <button className="px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><NavLink to='log-in'>Đăng Nhập</NavLink></button>
+            <button className="px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='log-in'>Đăng Nhập</Link></button>
           </m.div>
           <m.div
             variants={fadeIn('down', 'spring', 1.15, 0.75)}
             initial='hidden'
             animate='show'
           >
-            <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><NavLink to='sign-in'>Đăng Kí</NavLink></button>
+            <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='sign-in'>Đăng Kí</Link></button>
           </m.div>
           
         </div>
@@ -167,4 +173,4 @@ const Header = ({ setMode, }) => {
   </>;
 };
 
-export default Header;
+export default memo(Header);

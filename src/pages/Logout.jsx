@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Logout = () => {
   return (
@@ -6,4 +6,4 @@ const Logout = () => {
   )
 }
 
-export default Logout
+export default memo(Logout)
