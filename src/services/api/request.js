@@ -1,4 +1,4 @@
-const API_DOMAIN = "django-test-server-h0a8srdbv-kilopfd.vercel.app/";
+const API_DOMAIN = "https://django-test-server-h0a8srdbv-kilopfd.vercel.app/";
 
 export const get = async (path, options = {}) => {
     const response = await fetch(API_DOMAIN + path, options);
