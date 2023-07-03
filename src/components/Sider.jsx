@@ -32,12 +32,14 @@ import {
   CubeTransparentIcon,
   ChevronDoubleLeftIcon
 } from "@heroicons/react/24/outline";
-import { Link, useParams } from 'react-router-dom';
-import { lesson } from '../services/api/getLesson';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { getLessons } from '../services/api/getLesson';
 import { motion as m } from 'framer-motion';
 import { slideIn } from '../services/motion';
 const Sider = () => {
   // set up state:
+  const location = useLocation();
+  const { categories } = location.state
   const [open, setOpen] = useState(0);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -48,18 +50,14 @@ const Sider = () => {
   // call api:
   const [data, setData] = useState([]);
   useEffect(() => {
-    const fetchApi = async () => {
-      const data = await lesson("timeline");
-      setData(data);
-    }
-    fetchApi()
+    getLessons('timeline', categories, setData)
   }, [])
   // end call api
-  
+
   return (
     <>
       <div className={`z-10 absolute top-0 left-0 h-full w-full backdrop-blur-sm blur-sm ${openSider === 0 ? 'hidden' : 'block'}`}></div>
-      <Card className={`h-auto w-m-max lg:w-[25rem] ${openSider === 0 ? 'w-[4rem] duration-300' : 'w-[25rem] duration-500 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
+      <Card className={`h-auto w-m-max lg:w-[25rem] ${openSider === 0 ? 'w-[4rem] duration-300 transition-all ease-out' : 'w-[25rem] duration-300 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
         <Button className='relative top-0 -left-10 p-3 bg-blue-600 rounded-full shadow-lg w-fit lg:hidden block' onClick={() => {
           if (openSider === 0)
             setSider(1);
@@ -106,9 +104,9 @@ const Sider = () => {
                             <CodeBracketIcon strokeWidth={3} className="h-5 w-5 ml-3 mr-2 hidden sm:block md:block lg:block" />
                           </ListItemPrefix>
                           <Typography className='lg:text-2xl md:text-2xl text-sm'>
-                            <Link to={`/lesson/cpp/${_val["param"]}`}>{_val["title"]}</Link>
+                            <Link to={`/lesson/cpp/${_val["param"]}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
                           </Typography>
-                          
+
                         </ListItem>
                       )
                     })}

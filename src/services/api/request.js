@@ -1,41 +1,12 @@
-const API_DOMAIN = "https://django-test-server-h0a8srdbv-kilopfd.vercel.app/";
+import axios from "axios";
 
-export const get = async (path, options = {}) => {
-    const response = await fetch(API_DOMAIN + path, options);
-    const result = await response.json();
-    return result;
-};
 
-export const post = async (path, options = {}) => {
-    const response = await fetch(API_DOMAIN + path, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(options),
-    });
-    const result = await response.json();
-    return result;
-};
+// http://127.0.0.1:8000/
+// https://django-test-server-h0a8srdbv-kilopfd.vercel.app/
+const API_DOMAIN = "http://127.0.0.1:8000/";
 
-export const del = async (path) => {
-    const response = await fetch(API_DOMAIN + path, {
-        method: "DELETE",
-    });
-    const result = await response.json();
-    return result;
-};
 
-export const patch = async (path, options = {}) => {
-    const response = await fetch(API_DOMAIN + path, {
-        method: "PATCH",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(options),
-    });
-    const result = await response.json();
-    return result;
-};
+export const domain = axios.create({
+    baseURL: `${API_DOMAIN}`
+})
+

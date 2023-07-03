@@ -2,14 +2,14 @@ import React from 'react'
 import { motion as m } from 'framer-motion'
 import { fadeIn, slideIn, textVariant, textVariant2, triggerShow } from '../services/motion'
 import { memo } from 'react'
-import { Link, useOutletContext } from 'react-router-dom'
+import { Link, useLocation, useOutletContext } from 'react-router-dom'
 
 function Courses() {
-  const { currentUrl } = useOutletContext();
-
+  const location = useLocation();
+  
   return (
     <>
-      <div className={"Courses" + (currentUrl.pathname === '/courses' ? ' pt-10' : '')}>
+      <div className={"Courses" + (location.pathname === '/courses' ? ' pt-10' : '')}>
         <div className='flex justify-between items-center mb-10 flex-wrap'>
           <m.div className='max-w-lg bg-blue-700 rounded-r-full pr-10'
             variants={slideIn('left', 'spring', 0.25, 0.75)}
@@ -31,7 +31,7 @@ function Courses() {
               <p className="inner-title lg:text-5xl md:text-5xl sm:text-5xl text-3xl font-sans pl-4">Khóa Học</p>
             </div>
           </m.div>
-          {currentUrl.pathname !== '/courses' && (
+          {location.pathname !== '/courses' && (
             <div>
               <button className="wrap-more flex items-center lg:pr-28 md:pr-28 sm:pr-28 pr-1 gap-2 rounded-l-full border-2 border-r-0 p-2 relative overflow-hidden duration-150 hover:scale-110"
 
@@ -106,7 +106,7 @@ function Courses() {
                   whileInView='show'
                   viewport={{ once: true }}
                 >
-                  <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline'>Vào Học</Link></button>
+                  <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline' state={{ categories: "cpp", param: "timeline" }} >Vào Học</Link></button>
                 </m.div>
               </div>
             </m.div>
