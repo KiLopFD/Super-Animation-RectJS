@@ -14,7 +14,7 @@ import { useLocation } from 'react-router-dom';
 
 const CodeEvaluate = () => {
   const location = useLocation()
-  const { param } = location.state
+  const { categories, param } = location.state
   const [submit, setSubmit] = useState(false);
   const [res, setRes] = useState(null);
   const [code, setCode] = useState(null);
@@ -76,7 +76,7 @@ const CodeEvaluate = () => {
               <CollapseDefault categories={lang} setCategories={setLang} data={_lang} key={Math.random()} />
             </div>
             <div className="wrap-code-editor rounded-lg overflow-hidden">
-              <CodeMonaCo lang={lang} key={lang} setCode={setCode} submit={submit} setRes={setRes}/>
+              <CodeMonaCo lang={lang} key={lang} setCode={setCode} submit={submit} setRes={setRes} param={param} categories={categories}/>
             </div>
 
             <div className="inner-wrap p-2">

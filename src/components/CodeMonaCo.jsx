@@ -4,13 +4,13 @@ import { LangCode as file } from '../constant';
 import { postCode } from '../services/api/utils/postCode';
 
 
-const CodeMonaCo = ({ lang, submit, setCode, setRes }) => {
+const CodeMonaCo = ({ lang, submit, setCode, setRes, param, categories }) => {
     const refRes = useRef('');
     useEffect(()=>{
         if (refRes.current !== '')
         {
             // setCode(refRes.current)
-            postCode('chap-0-1',refRes.current,setRes)
+            postCode(categories, param ,refRes.current,setRes)
         }
             
     }, [submit])

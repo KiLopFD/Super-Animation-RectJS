@@ -72,7 +72,8 @@ const Sider = ({ method }) => {
         <div className="mb-2 flex items-center gap-4 py-2">
           <p>C++</p>
           <Typography className={`lg:text-2xl md:text-2xl text-sm font-sans font-bold lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
-            <Link to='/lesson/cpp/chap-0-1'>Danh sách bài học</Link>
+            {/* <Link to='/lesson/cpp/chap-0-1'></Link> */}
+            {method==='lesson'?'Danh sách bài học':'Danh sách bài tập'}
           </Typography>
         </div>
         <List className='p-0'>
@@ -94,7 +95,8 @@ const Sider = ({ method }) => {
                       <BookmarkSquareIcon className={`h-7 w-7 ${openSider === 0 ? 'block' : 'hidden'}`} />
                     </ListItemPrefix>
                     <Typography color="blue-gray" className={`lg:text-2xl md:text-2xl text-sm text-start pl-2 mr-auto font-normal lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
-                      <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}>{val["title"]}</Link>
+                      {/* <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link> */}
+                      {method==='exercise'?val["title"]:(<Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link>)}
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
@@ -107,7 +109,7 @@ const Sider = ({ method }) => {
                             <CodeBracketIcon strokeWidth={3} className="h-5 w-5 ml-3 mr-2 hidden sm:block md:block lg:block" />
                           </ListItemPrefix>
                           <Typography className='lg:text-2xl md:text-2xl text-sm'>
-                            <Link to={`/${method}/${categories}/${_val["param"]}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
+                            <Link to={method==='exercise'?`/code-submit/${method}/${_val.param}`:`lesson/${categories}/${_val.param}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
                           </Typography>
 
                         </ListItem>

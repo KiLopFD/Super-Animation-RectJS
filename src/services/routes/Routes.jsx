@@ -57,7 +57,7 @@ const Routes = [
                 ]
               },
               {
-                path: "code-submit/:_params",
+                path: "code-submit/:_categories/:_params",
                 element: <CodeEvaluate />,
               }
             ]

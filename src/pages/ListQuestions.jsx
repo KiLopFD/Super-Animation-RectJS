@@ -14,7 +14,7 @@ const ListQuestions = () => {
                 return (<div key={idx}>
                     <div className={`chap-item flex lg:flex-row md:flex-row sm:flex-col flex-col items-center  justify-between mb-5 py-4 px-10 border-2 rounded-xl`}>
                         <p className="inner-title lg:mb-0 md:mb-0 sm:mb-4 mb-4 max-w-[300px]">{val.title}</p>
-                        <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to={`/code-submit/${val.param}`} state={{param:val.param}}>Giải</Link></button>
+                        <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to={`/code-submit/${categories}/${val.param}`} state={{categories:categories,param:val.param}}>Giải</Link></button>
                     </div>
                 </div>)
             })}
