@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import PrivateRoutes from "../../components/PrivateRoutes";
-import { Layout,About,Contact,Courses,Home,Login,Logout,SignUp,DetailCourses, Cpp } from "../../pages";
+import { Layout, About, Contact, Courses, Home, Login, Logout, SignUp, DetailCourses, Cpp, Exercise, CodeEvaluate, ListProblem, ListQuestions } from "../../pages";
 
 
 const Routes = [
@@ -22,7 +22,7 @@ const Routes = [
       },
       {
         path: "courses",
-        element: <Courses/>
+        element: <Courses />
       },
       {
         path: "sign-in",
@@ -33,18 +33,36 @@ const Routes = [
         element: <Login />,
       },
       {
-        path: "lesson",
-        element: <DetailCourses />,
-        children: [
-          {
-            path: "cpp/:cpp_params",
-            element: <Cpp/>
-          }
-        ]
-      }
-      ,
+        path: "/exercise",
+        element: <Exercise />,
+      },
       {
         element: <PrivateRoutes />,
+        children: [
+          {
+            element: <DetailCourses />,
+            children: [
+              {
+                path: "lesson/:_lang/:_params",
+                element: <Cpp />
+              },
+              {
+                path: "exercise/:_lang",
+                element: <ListProblem />,
+                children: [
+                  {
+                    path:"list-all-questions",
+                    element:<ListQuestions/>
+                  }
+                ]
+              },
+              {
+                path: "code-submit/:_params",
+                element: <CodeEvaluate />,
+              }
+            ]
+          }
+        ]
       },
       {
         path: "*",

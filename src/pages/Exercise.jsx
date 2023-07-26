@@ -7,8 +7,7 @@ import { useEffect } from 'react'
 import { getImages } from '../services/api/utils/getImages'
 import { SeeMore, SlideTitle } from '../components'
 
-
-function Courses() {
+const Exercise = () => {
   const location = useLocation();
   const [images, setImages] = useState(null)
   const [loading, setLoading] = useState(0);
@@ -21,16 +20,16 @@ function Courses() {
   }, [loading])
   return (
     <>
-      <div className={"Courses" + (location.pathname === '/courses' ? ' pt-10' : '')}>
+      <div className={"Exercise" + (location.pathname === '/exercise' ? ' pt-10' : '')}>
         <div className='flex justify-between items-center mb-10 flex-wrap'>
-          <SlideTitle nameTitle={'Khóa Học'} />
-          {location.pathname !== '/courses' && (
-            <SeeMore linkTo={'courses'} />
+          <SlideTitle nameTitle={'Bài Tập'} />
+          {location.pathname !== '/exercise' && (
+            <SeeMore linkTo={'exercise'} />
           )}
         </div>
 
         <div className="wrap-content grid grid-cols-12 container mx-auto xl:gap-10 lg:gap-3 md:gap-3 sm:gap-0 gap-0 lg:px-0 md:px-0 sm:px-0 px-5">
-          {loading !== 0 && (location.pathname === '/courses' ? images.map((val, index) => {
+          {loading !== 0 && (location.pathname === '/exercise' ? images.map((val, index) => {
             return (
               <div key={index} className="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
                 <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto"
@@ -73,7 +72,7 @@ function Courses() {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline' state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/exercise/${val["name"]}/list-chap`} state={{ categories: val["name"], param: "list-chap" }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>
@@ -122,7 +121,7 @@ function Courses() {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline' state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/exercise/${val["name"]}`} state={{ categories: val["name"], param: "list-chap" }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>
@@ -131,9 +130,8 @@ function Courses() {
           }))}
         </div>
       </div>
-
     </>
   )
 }
 
-export default memo(Courses)
+export default memo(Exercise)

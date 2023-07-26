@@ -10,24 +10,27 @@ import {
 
 import { memo, useMemo, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { getLessons } from "../services/api/getLesson";
+import { getEx } from "../services/api/utils/getEx";
+import { getLessons } from "../services/api/utils/getLesson";
 
 const TimeLine = () => {
-    const { cpp_params } = useParams();
     const [data, setData] = useState([])
     const location = useLocation();
-    const { categories, params } = location.state
+    const { categories, param } = location.state
+    const [loading, setLoading] = useState(0);
     useMemo(() => {
-        getLessons(cpp_params, categories, setData)
-    }, [])
-    console.log(location.state)
+        setTimeout(() => {
+            setLoading(1)
+        }, 2000);
+        getLessons('timeline', categories, setData)
+    }, [loading])
     return (
         // flex-col help width fit 
         <div className="w-full flex flex-col items-center pt-10 w-m-min">
             <p className="text-white mb-5 font-sans text-5xl">Lộ Trình</p>
             <div className="pl-3">
                 <ol className="relative border-l-4 border-gray-200 dark:border-gray-700 h-fit border-b-2 w-fit">
-                    {data?.map((val, idx) => {
+                    {loading !== 0  && data?.map((val, idx) => {
                         return (
                             <li className={`${idx !== data.length - 1 ? 'mb-10' : ''} pl-6`} key={idx}>
                                 <span className="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
@@ -37,7 +40,7 @@ const TimeLine = () => {
 
                                 {val["list"].map((_val, _idx) => {
                                     return (
-                                        <p className="py-2 border-2 border-[#0F1729] pl-2 rounded-3xl text-base font-normal text-gray-500 dark:text-gray-400 hover:text-amber-500 hover:border-amber-500 duration-150 ease-in" key={_idx}><Link>{_val["title"]}</Link></p>
+                                        <p className="py-2 border-2 border-[#0F1729] pl-2 rounded-3xl text-base font-normal text-gray-500 dark:text-gray-400 hover:text-amber-500 hover:border-amber-500 duration-150 ease-in" key={_idx}><Link to={`/lesson/${categories}/${_val["param"]}`} state={{ categories: categories, param: _val["param"], }}>{_val["title"]}</Link></p>
                                     )
                                 })}
 

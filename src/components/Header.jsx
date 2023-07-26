@@ -46,7 +46,7 @@ const Header = ({ setMode, }) => {
                 show: {
                   width: "100%",
                   transition: {
-                    type: 'spring',
+                    type: 'tween',
                     damping: 25,
                     velocity: 0.025,
                     stiffness: 50,
@@ -75,7 +75,7 @@ const Header = ({ setMode, }) => {
                 show: {
                   width: "100%",
                   transition: {
-                    type: 'spring',
+                    type: 'tween',
                     damping: 25,
                     velocity: 0.025,
                     stiffness: 50,
@@ -105,7 +105,7 @@ const Header = ({ setMode, }) => {
                 show: {
                   width: "100%",
                   transition: {
-                    type: 'spring',
+                    type: 'tween',
                     damping: 25,
                     velocity: 0.025,
                     stiffness: 50,
@@ -135,7 +135,7 @@ const Header = ({ setMode, }) => {
                 show: {
                   width: "100%",
                   transition: {
-                    type: 'spring',
+                    type: 'tween',
                     damping: 25,
                     velocity: 0.025,
                     stiffness: 50,

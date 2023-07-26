@@ -1,9 +1,11 @@
-import React, { Suspense,memo } from 'react'
+import React, { Suspense,memo, useState } from 'react'
 import { motion as m } from 'framer-motion'
 import { fadeIn, textVariant, textVariant2, triggerShow } from '../services/motion'
-import { Courses } from '.'
+import { Courses, Exercise } from '.'
+
 
 const Home = () => {
+  
   return (
     <>
       <div className="Home"
@@ -134,7 +136,9 @@ const Home = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <Courses/>
         </Suspense>
-
+        <Suspense fallback={<div>Loading...</div>}>
+          <Exercise />
+        </Suspense>
       </div>
     </>
   )

@@ -1,4 +1,4 @@
-import { domain } from "./request"
+import { domain } from "../request"
 
 const api_url = 'api'
 
@@ -9,12 +9,12 @@ const api_url = 'api'
 //     return data
 // }
 
-export const getLessons = (params, categories = 'cpp', setData) => {
-    domain.get(`${api_url}/lesson/${categories}/${params}`)
+export const getEx = (params, categories = 'cpp', setData) => {
+    domain.get(`${api_url}/exercise/${categories}/${params}`)
         .then((res) => {
             setData(res.data);
         })
         .catch((err) => {
             console.log(err);
-    })
+        })
 }

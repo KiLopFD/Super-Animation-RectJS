@@ -33,13 +33,14 @@ import {
   ChevronDoubleLeftIcon
 } from "@heroicons/react/24/outline";
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { getLessons } from '../services/api/getLesson';
+import { getLessons } from '../services/api/utils/getLesson';
 import { motion as m } from 'framer-motion';
 import { slideIn } from '../services/motion';
-const Sider = () => {
+import { getEx } from '../services/api/utils/getEx';
+const Sider = ({ method }) => {
   // set up state:
   const location = useLocation();
-  const { categories } = location.state
+  const { categories, param } = location.state
   const [open, setOpen] = useState(0);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -50,7 +51,9 @@ const Sider = () => {
   // call api:
   const [data, setData] = useState([]);
   useEffect(() => {
-    getLessons('timeline', categories, setData)
+    if (method === 'lesson')
+      getLessons('timeline', categories, setData)
+    else getEx('list-chap', categories, setData)
   }, [])
   // end call api
 
@@ -91,7 +94,7 @@ const Sider = () => {
                       <BookmarkSquareIcon className={`h-7 w-7 ${openSider === 0 ? 'block' : 'hidden'}`} />
                     </ListItemPrefix>
                     <Typography color="blue-gray" className={`lg:text-2xl md:text-2xl text-sm text-start pl-2 mr-auto font-normal lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
-                      {val["title"]}
+                      <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}>{val["title"]}</Link>
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
@@ -104,7 +107,7 @@ const Sider = () => {
                             <CodeBracketIcon strokeWidth={3} className="h-5 w-5 ml-3 mr-2 hidden sm:block md:block lg:block" />
                           </ListItemPrefix>
                           <Typography className='lg:text-2xl md:text-2xl text-sm'>
-                            <Link to={`/lesson/cpp/${_val["param"]}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
+                            <Link to={`/${method}/${categories}/${_val["param"]}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
                           </Typography>
 
                         </ListItem>
