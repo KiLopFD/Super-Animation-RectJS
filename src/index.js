@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Routes } from 'react-router-dom';
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import allReducers from './services/container';
+import store from './services/container';
+import { Provider } from 'react-redux';
 
-const store = createStore(allReducers);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +14,7 @@ root.render(
       <App />
     </Routes>
   </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

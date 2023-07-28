@@ -1,7 +1,7 @@
 import React, { Suspense, useState, memo, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Header, Footer } from "../components";
-import { cmpBsLbUb } from "../services/api/utils/getPromblem";
+import { cmpBsLbUb } from "../services/api/utils/getProblem";
 
 
 

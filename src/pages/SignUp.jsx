@@ -44,7 +44,7 @@ const SignUp = () => {
     {
       const expires = new Date(dataUser.user.expired_date)
       setLocalStorageUser(dataUser.user)
-      setCookieToken(dataUser.access_token,expires , setCookie)
+      setCookieToken(dataUser.access_token, expires , setCookie)
       navigate('/')
     }
       

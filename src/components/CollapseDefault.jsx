@@ -8,6 +8,9 @@ import {
   CubeTransparentIcon,
   ChevronDoubleLeftIcon
 } from "@heroicons/react/24/outline";
+import { useDispatch, useSelector } from 'react-redux';
+import { setLang, setTheme } from '../services/container/slices/vsCodeSlice';
+
 
 const options = [
   'None',
@@ -28,18 +31,37 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-const CollapseDefault = ({ categories, setCategories, data }) => {
-
+const CollapseDefault = ({data, choose }) => {
+  // redux
+  const vsCodeChoose = useSelector((state) => {
+    if (choose === 'lang')
+      return state.vsCodeReducer.lang
+    else if (choose === 'theme')
+      return state.vsCodeReducer.theme
+  })
+  const dispatch = useDispatch()
+  // end redux
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (val) => {
-    setCategories(val)
+    if (val === 'no-option'){
+      if (choose === 'lang')
+        val=vsCodeChoose
+      else if (choose === 'theme')
+        val=vsCodeChoose
+    }
+    // setCategories(val)
+    // console.log(val)
+    if (choose === 'lang')
+      dispatch(setLang(val))
+    else if (choose === 'theme')
+      dispatch(setTheme(val))
+    
     setAnchorEl(null);
-  };
-
+  };  
   return (
     <div>
       <IconButton
@@ -51,7 +73,7 @@ const CollapseDefault = ({ categories, setCategories, data }) => {
         onClick={handleClick}
       >
         <div className="flex items-center gap-1">
-          <p>{categories}</p>
+          <p className='text-sm'>{vsCodeChoose}</p>
           <ChevronDownIcon className={`w-5 h-5 duration-150 ${open ? 'rotate-180' : ''}`} strokeWidth={2.5} />
         </div>
 
@@ -64,7 +86,7 @@ const CollapseDefault = ({ categories, setCategories, data }) => {
         }}
         anchorEl={anchorEl}
         open={open}
-        onClose={() => handleClose('javascript')}
+        onClose={() => handleClose('no-option')}
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
@@ -74,7 +96,7 @@ const CollapseDefault = ({ categories, setCategories, data }) => {
       >
         {data.map((option, idx) => (
           <MenuItem className='bg-[#333]' key={idx} selected={option === data[0]} onClick={() => handleClose(option)}>
-            <p className='text-black text-sm'>{option}</p>
+            <p className='text-black text-md'>{option}</p>
           </MenuItem>
         ))}
       </Menu>

@@ -1,19 +1,36 @@
 import Editor, { useMonaco } from '@monaco-editor/react';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { LangCode as file } from '../constant';
 import { postCode } from '../services/api/utils/postCode';
+import { useSelector } from 'react-redux';
 
 
-const CodeMonaCo = ({ lang, submit, setCode, setRes, param, categories }) => {
+const CodeMonaCo = ({ submit, setRes, param, categories }) => {
+    const lang = useSelector((state) => state.vsCodeReducer.lang)
+    const theme = useSelector((state) => state.vsCodeReducer.theme)
     const refRes = useRef('');
-    useEffect(()=>{
-        if (refRes.current !== '')
-        {
+    const [reloadTheme, setReloadTheme] = useState(theme)
+
+    const handleChangeTheme = (monaco) => {
+        import(`monaco-themes/themes/${theme}.json`).then((data) => {
+            // console.log({ ...data });
+            monaco.editor.defineTheme('vs', { ...data });
+            console.log(data)
+        })
+    }
+    useEffect(() => {
+        if (refRes.current !== '') {
             // setCode(refRes.current)
-            postCode(categories, param ,refRes.current,setRes)
+            postCode(categories, param, refRes.current, setRes)
         }
-            
+
     }, [submit])
+
+    useEffect(() => {
+        if (theme !== reloadTheme)
+            handleChangeTheme(reloadTheme)
+    }, [theme])
+
     return (
         <div>
             <Editor
@@ -23,7 +40,7 @@ const CodeMonaCo = ({ lang, submit, setCode, setRes, param, categories }) => {
                     wordWrap: 'on',
                     cursorWidth: 3,
                     cursorStyle: 'line',
-                    quickSuggestions:true,
+                    quickSuggestions: true,
                 }}
                 className='h-[600px] mb-3 relative z-0'
                 height=""
@@ -33,10 +50,7 @@ const CodeMonaCo = ({ lang, submit, setCode, setRes, param, categories }) => {
                 }}
                 theme='vs'
                 beforeMount={(monaco) => {
-                    import("monaco-themes/themes/Dracula.json").then((data) => {
-                        // console.log({ ...data });
-                        monaco.editor.defineTheme('vs', { ...data });
-                    })
+                    setReloadTheme(monaco)
                 }}
 
 

@@ -12,6 +12,7 @@ const SeeMore = lazy(() => import("./SeeMore"));
 const CodeMonaCo = lazy(() => import("./CodeMonaCo"));
 const SplitBar = lazy(() => import("./SplitBar"));
 const CollapseDefault = lazy(() => import("./CollapseDefault"));
+const TabsCustom = lazy(() => import("./TabsCustom"));
 
 export {
     Footer,
@@ -23,5 +24,6 @@ export {
     SeeMore,
     CodeMonaCo,
     SplitBar,
-    CollapseDefault
+    CollapseDefault,
+    TabsCustom
 }

@@ -73,7 +73,7 @@ function Courses() {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline' state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>
@@ -122,7 +122,7 @@ function Courses() {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to='/lesson/cpp/timeline' state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>

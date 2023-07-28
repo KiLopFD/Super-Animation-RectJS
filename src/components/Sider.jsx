@@ -96,7 +96,7 @@ const Sider = ({ method }) => {
                     </ListItemPrefix>
                     <Typography color="blue-gray" className={`lg:text-2xl md:text-2xl text-sm text-start pl-2 mr-auto font-normal lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
                       {/* <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link> */}
-                      {method==='exercise'?val["title"]:(<Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link>)}
+                      {method==='exercise'?val["title"]:(<Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}>{val["title"]}</Link>)}
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
