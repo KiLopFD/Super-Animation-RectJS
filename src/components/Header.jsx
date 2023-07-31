@@ -30,7 +30,7 @@ const Header = ({ setMode, }) => {
           <Link to='/' >Logo</Link>
         </m.div>
 
-        <div className="col-span-6 flex justify-center sm:hidden lg:flex md:flex hidden">
+        <div className="col-span-6 justify-center sm:hidden lg:flex md:flex hidden">
           <m.div className="relative md:hidden lg:block"
             variants={fadeIn('down', 'spring', 0.75, 0.75)}
             initial='hidden'

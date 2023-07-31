@@ -25,7 +25,7 @@ const vsCodeSlice = createSlice({
         setFontSize: (state, valFontSize) => {
             return {
                 ...state,
-                fontSize: valFontSize
+                fontSize: valFontSize.payload
             }
         },
     }

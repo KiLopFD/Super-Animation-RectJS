@@ -5,7 +5,7 @@ import { postCode } from '../services/api/utils/postCode';
 import { useSelector } from 'react-redux';
 
 
-const CodeMonaCo = ({ submit, setRes, param, categories }) => {
+const CodeMonaCo = ({ submit, setRes, param, categories, options }) => {
     const lang = useSelector((state) => state.vsCodeReducer.lang)
     const theme = useSelector((state) => state.vsCodeReducer.theme)
     const refRes = useRef('');
@@ -15,15 +15,14 @@ const CodeMonaCo = ({ submit, setRes, param, categories }) => {
         import(`monaco-themes/themes/${theme}.json`).then((data) => {
             // console.log({ ...data });
             monaco.editor.defineTheme('vs', { ...data });
-            console.log(data)
+            // console.log(data)
         })
     }
     useEffect(() => {
-        if (refRes.current !== '') {
+        if (refRes.current !== '' && lang === categories) {
             // setCode(refRes.current)
-            postCode(categories, param, refRes.current, setRes)
+            postCode(categories, param, refRes.current, setRes, options)
         }
-
     }, [submit])
 
     useEffect(() => {
@@ -42,7 +41,7 @@ const CodeMonaCo = ({ submit, setRes, param, categories }) => {
                     cursorStyle: 'line',
                     quickSuggestions: true,
                 }}
-                className='h-[600px] mb-3 relative z-0'
+                className='h-[570px] mb-3 relative z-0'
                 height=""
                 language={lang}
                 onChange={(val) => {
@@ -51,6 +50,14 @@ const CodeMonaCo = ({ submit, setRes, param, categories }) => {
                 theme='vs'
                 beforeMount={(monaco) => {
                     setReloadTheme(monaco)
+                    if (theme==reloadTheme)
+                    {
+                        import(`monaco-themes/themes/Dracula.json`).then((data) => {
+                            // console.log({ ...data });
+                            monaco.editor.defineTheme('vs', { ...data });
+                            // console.log(data)
+                        })
+                    }
                 }}
 
 

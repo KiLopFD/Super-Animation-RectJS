@@ -13,8 +13,8 @@ import {
   AccordionBody,
   Alert,
   Drawer,
-  Button,
 } from "@material-tailwind/react";
+import { Button } from '@mui/material';
 import {
   PresentationChartBarIcon,
   ShoppingBagIcon,
@@ -61,19 +61,22 @@ const Sider = ({ method }) => {
     <>
       <div className={`z-10 absolute top-0 left-0 h-full w-full backdrop-blur-sm blur-sm ${openSider === 0 ? 'hidden' : 'block'}`}></div>
       <Card className={`h-auto w-m-max lg:w-[25rem] ${openSider === 0 ? 'w-[4rem] duration-300 transition-all ease-out' : 'w-[25rem] duration-300 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
-        <Button className='relative top-0 -left-10 p-3 bg-blue-600 rounded-full shadow-lg w-fit lg:hidden block' onClick={() => {
-          if (openSider === 0)
-            setSider(1);
-          else setSider(0);
-        }}>
-          <ChevronDoubleLeftIcon className={'h-8 w-8'} strokeWidth={2.5} />
-        </Button>
+        <div className='relative top-0 -left-10 px-0 py-2 bg-blue-600 rounded-full shadow-lg w-fit lg:hidden block'>
+          <Button onClick={() => {
+            if (openSider === 0)
+              setSider(1);
+            else setSider(0);
+          }}>
+            <ChevronDoubleLeftIcon className={`h-8 w-8 duration-150 ${openSider===1?'-rotate-180':''}`} strokeWidth={2.5}/>
+          </Button>
+        </div>
+
 
         <div className="mb-2 flex items-center gap-4 py-2">
           <p>C++</p>
           <Typography className={`lg:text-2xl md:text-2xl text-sm font-sans font-bold lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
             {/* <Link to='/lesson/cpp/chap-0-1'></Link> */}
-            {method==='lesson'?'Danh sách bài học':'Danh sách bài tập'}
+            {method === 'lesson' ? 'Danh sách bài học' : 'Danh sách bài tập'}
           </Typography>
         </div>
         <List className='p-0'>
@@ -96,7 +99,7 @@ const Sider = ({ method }) => {
                     </ListItemPrefix>
                     <Typography color="blue-gray" className={`lg:text-2xl md:text-2xl text-sm text-start pl-2 mr-auto font-normal lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
                       {/* <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link> */}
-                      {method==='exercise'?val["title"]:(<Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}>{val["title"]}</Link>)}
+                      {method === 'exercise' ? val["title"] : (<Link to={`/${method}/${categories}/${val["param"]}`} state={{ categories: categories, param: val["param"] }}>{val["title"]}</Link>)}
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
@@ -109,7 +112,7 @@ const Sider = ({ method }) => {
                             <CodeBracketIcon strokeWidth={3} className="h-5 w-5 ml-3 mr-2 hidden sm:block md:block lg:block" />
                           </ListItemPrefix>
                           <Typography className='lg:text-2xl md:text-2xl text-sm'>
-                            <Link to={method==='exercise'?`/code-submit/${method}/${_val.param}`:`lesson/${categories}/${_val.param}`} state={{categories: categories,param:_val["param"]}}>{_val["title"]}</Link>
+                            <Link to={method === 'exercise' ? `/code-submit/${method}/${_val.param}/description` : `lesson/${categories}/${_val.param}`} state={{ categories: categories, param: _val["param"] }}>{_val["title"]}</Link>
                           </Typography>
 
                         </ListItem>

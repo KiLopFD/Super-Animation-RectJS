@@ -1,11 +1,11 @@
-import React, { Suspense,memo, useState } from 'react'
+import React, { Suspense, memo, useState } from 'react'
 import { motion as m } from 'framer-motion'
 import { fadeIn, textVariant, textVariant2, triggerShow } from '../services/motion'
 import { Courses, Exercise } from '.'
 
 
 const Home = () => {
-  
+
   return (
     <>
       <div className="Home"
@@ -18,7 +18,7 @@ const Home = () => {
                   variants={textVariant(1.35)}
                   initial='hidden'
                   whileInView='show'
-                  viewport={{once: true}}
+                  viewport={{ once: true }}
                 >
                   C++ là nền tảng quan trọng của mọi lập trình viên
                 </m.p>
@@ -38,7 +38,7 @@ const Home = () => {
                     <button className='font-sans font-bold px-6 py-6 border-4 rounded-xl border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 lg:text-5xl md:text-5xl sm:text-3xl text-3xl min-w-max'
                     >Học Ngay</button>
                   </m.div>
-                  
+
                   <m.div
                     variants={textVariant(1.55)}
                     initial='hidden'
@@ -78,30 +78,30 @@ const Home = () => {
                     show: {
                       borderRadius: ["34% 66% 58% 42% / 26% 33% 67% 74% ", "15% 85% 76% 24% / 74% 37% 63% 26% ", "64% 36% 16% 84% / 56% 81% 19% 44% ", "72% 28% 32% 68% / 40% 20% 80% 60% ", "34% 66% 58% 42% / 26% 33% 67% 74% "],
                       transition: {
-                        duration:15,
+                        duration: 15,
                         repeat: Infinity,
                         delay: 0.5,
                         velocity: 0.003,
                         restDelta: 0.001,
                         restSpeed: 0.00001,
-                        type:'tween',
+                        type: 'tween',
                       }
                     }
                   }}
                   initial='initial'
                   whileInView='show'
                   transition={{
-                        type: "spring",
-                        stiffness: 10,
-                        damping: 5,
-                        duration: 2,
-                        velocity: 0.0001,
-                        restDelta: 0.0001,
-                        restSpeed: 0.0005,
-                        repeatType: "reverse",
-                        repeat: Infinity,
+                    type: "spring",
+                    stiffness: 10,
+                    damping: 5,
+                    duration: 2,
+                    velocity: 0.0001,
+                    restDelta: 0.0001,
+                    restSpeed: 0.0005,
+                    repeatType: "reverse",
+                    repeat: Infinity,
                   }}
-                  
+
                 >
                   <svg className='hidden sm:block md:block lg:block mx-auto' width="303" height="325" viewBox="0 0 303 325" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M299.043 243.07C301.42 239.156 302.897 234.745 302.897 230.785V93.3082C302.897 89.3477 301.422 84.9383 299.044 81.0239L151.448 162.047L299.043 243.07Z" fill="#00599C" />
@@ -121,7 +121,7 @@ const Home = () => {
                   </svg>
 
                 </m.div>
-                
+
 
 
               </m.div>
@@ -132,13 +132,16 @@ const Home = () => {
         <svg className='w-full left-0 h-auto block mb-24' width="1669" height="344" viewBox="0 0 1669 344" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fillRule="evenodd" clipRule="evenodd" d="M0 288L34.7708 240C69.5417 192 139.083 96 208.625 96C278.167 96 347.708 192 417.25 234C486.792 276 556.333 264 625.875 222C695.417 180 764.958 108 834.5 114C904.042 120 973.583 204 1043.13 258C1112.67 312 1182.21 336 1251.75 342C1321.29 348 1390.83 336 1460.38 312C1529.92 288 1599.46 252 1634.23 234L1669 216V0H1634.23C1599.46 0 1529.92 0 1460.38 0C1390.83 0 1321.29 0 1251.75 0C1182.21 0 1112.67 0 1043.13 0C973.583 0 904.042 0 834.5 0C764.958 0 695.417 0 625.875 0C556.333 0 486.792 0 417.25 0C347.708 0 278.167 0 208.625 0C139.083 0 69.5417 0 34.7708 0H0V288Z" fill="#1D4ED8" />
         </svg>
-                     
-        <Suspense fallback={<div>Loading...</div>}>
-          <Courses/>
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Exercise />
-        </Suspense>
+        <div className='courses py-5'>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Courses />
+          </Suspense>
+        </div>
+        <div className='exercise py-5'>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Exercise />
+          </Suspense>
+        </div>
       </div>
     </>
   )

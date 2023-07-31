@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import PrivateRoutes from "../../components/PrivateRoutes";
 import { Layout, About, Contact, Courses, Home, Login, Logout, SignUp, DetailCourses, Cpp, Exercise, CodeEvaluate, ListProblem, ListQuestions } from "../../pages";
+import { DescriptionProblem, Reference, Solution, Submissions } from "../../components";
 
 
 const Routes = [
@@ -42,10 +43,12 @@ const Routes = [
           {
             element: <DetailCourses />,
             children: [
+              // lesson
               {
                 path: "lesson/:_lang/:_params",
                 element: <Cpp />
               },
+              // problem exercise
               {
                 path: "exercise/:_lang",
                 element: <ListProblem />,
@@ -59,6 +62,24 @@ const Routes = [
               {
                 path: "code-submit/:_categories/:_params",
                 element: <CodeEvaluate />,
+                children:[
+                  {
+                    path:"description",
+                    element: <DescriptionProblem />
+                  },
+                  {
+                    path:"reference",
+                    element: <Reference />
+                  },
+                  {
+                    path:"solution",
+                    element: <Solution />
+                  },
+                  {
+                    path:"submissions",
+                    element: <Submissions />
+                  },
+                ]
               }
             ]
           }

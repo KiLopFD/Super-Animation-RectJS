@@ -6,12 +6,12 @@ import { slideIn } from '../services/motion'
 const SlideTitle = ({nameTitle}) => {
   return (
       <>
-          <m.div className='max-w-lg bg-blue-700 rounded-r-full pr-10'
+          <m.div className='max-w-lg bg-blue-700 rounded-r-full pr-10 min-w-[400px]'
               variants={slideIn('left', 'tween', 0.25, 0.75)}
               initial='hidden'
               whileInView='show'
           >
-              <div className="inner-wrap flex justify-end items-center pl-5">
+              <div className="inner-wrap flex justify-start items-center pl-10">
                   <svg className='stroke-2' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M50 25V79.1667" stroke="#fafafa" strokeWidth="2" strokeLinecap="round" />
                       <path d="M87.5 25V79.1667" stroke="#fafafa" strokeWidth="2" strokeLinecap="round" />

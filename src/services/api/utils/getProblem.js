@@ -5,9 +5,9 @@ const api_url = 'api'
 
 
 export const getProblem = (params, categories = 'cpp', setData) => {
-    domain.get(`${api_url}/submit-code/${categories}/${params}`)
+    domain.get(`${api_url}/submit-code/${categories}/${params}/description`)
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             setData(res.data);
         })
         .catch((err) => {
