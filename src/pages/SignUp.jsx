@@ -42,7 +42,7 @@ const SignUp = () => {
   useEffect(() => {
     if (dataUser.detail === 'success')
     {
-      navigate('/login')
+      navigate('/log-in')
     }
       
   }, [dataUser])

@@ -164,7 +164,7 @@ const Header = ({ setMode, }) => {
             initial='hidden'
             animate='show'
           >
-            <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='sign-in'>Đăng Kí</Link></button>
+            <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='/sign-up'>Đăng Kí</Link></button>
           </m.div>
           
         </div>
