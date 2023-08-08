@@ -9,10 +9,11 @@ const api_url = 'api'
 //     return data
 // }
 
-export const getLessons = (params, categories = 'cpp', setData) => {
+export const getLessons = async (params, categories = 'cpp', setData) => {
     domain.get(`${api_url}/lesson/${categories}/${params}`)
-        .then((res) => {
-            setData(res.data);
+        .then(async (res) => {
+            const data = await res.data
+            setData(data);
         })
         .catch((err) => {
             console.log(err);

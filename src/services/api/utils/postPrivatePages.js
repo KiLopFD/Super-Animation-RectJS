@@ -2,16 +2,17 @@ import { domain } from "../request"
 
 const api_url = 'api'
 
-export const postPrivatePages = (token, dispatch, checkAuthen) => {
+export const postPrivatePages = async (token, dispatch, checkAuthen) => {
     domain.post(`${api_url}/test`,{
         token: token
     }, {
         headers: {
             Authorization: `Token ${token}`
         }
-    }).then((res) => {
-        console.log(res.data)
-        dispatch(checkAuthen(res.data))
+    }).then(async (res) => {
+        const data = await res.data
+        console.log(data)
+        dispatch(checkAuthen(data))
     }).catch((err) => {
         console.error(err)
     })

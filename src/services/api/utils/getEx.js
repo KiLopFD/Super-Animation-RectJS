@@ -9,10 +9,11 @@ const api_url = 'api'
 //     return data
 // }
 
-export const getEx = (params, categories = 'cpp', setData) => {
+export const getEx = async (params, categories = 'cpp', setData) => {
     domain.get(`${api_url}/exercise/${categories}/${params}`)
-        .then((res) => {
-            setData(res.data);
+        .then(async (res) => {
+            const data = await res.data
+            setData(data);
         })
         .catch((err) => {
             console.log(err);

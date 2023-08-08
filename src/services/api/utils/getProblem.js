@@ -4,11 +4,12 @@ const api_url = 'api'
 
 
 
-export const getProblem = (params, categories = 'cpp', setData) => {
+export const getProblem = async (params, categories = 'cpp', setData) => {
     domain.get(`${api_url}/submit-code/${categories}/${params}/description`)
-        .then((res) => {
+        .then(async (res) => {
             // console.log(res.data)
-            setData(res.data);
+            const data = await res.data
+            setData(data);
         })
         .catch((err) => {
             console.log(err);
