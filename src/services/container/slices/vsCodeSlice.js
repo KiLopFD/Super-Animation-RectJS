@@ -4,7 +4,7 @@ const vsCodeSlice = createSlice({
     name: 'vsCode',
     initialState: {
         theme: 'Dracula',
-        lang: 'javascript',
+        lang: 'cpp',
         fontSize: 18,
     },
     reducers: {

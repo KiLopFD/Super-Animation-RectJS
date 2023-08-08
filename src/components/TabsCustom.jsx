@@ -36,7 +36,7 @@ const TabCustom = ({ testCaseBase, res }) => {
     }, [])
 
     useEffect(()=>{
-        console.log(res)
+        // console.log(res)
         if (res !== null)
             setSignal(res)
     },[res])

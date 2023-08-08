@@ -26,7 +26,7 @@ const Routes = [
         element: <Courses />
       },
       {
-        path: "sign-in",
+        path: "sign-up",
         element: <SignUp />,
       },
       {

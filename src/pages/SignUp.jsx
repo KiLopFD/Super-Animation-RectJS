@@ -25,10 +25,10 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const fullName = e.target.elements.name.value;
-    const email = e.target.elements.email.value;
-    const password = e.target.elements.pw.value;
-    const phone = e.target.elements.phone.value;
+    const fullName = e.target.elements.name.value.trim();
+    const email = e.target.elements.email.value.trim();
+    const password = e.target.elements.pw.value.trim();
+    const phone = e.target.elements.phone.value.trim();
     const infoUser = {
       username: `${fullName.split(" ")[fullName.split(" ").length - 1]}${Date.now()}`,
       full_name: fullName,
@@ -40,12 +40,9 @@ const SignUp = () => {
     postSignUp(infoUser, setUser)
   }
   useEffect(() => {
-    if (dataUser.type === 'success')
+    if (dataUser.detail === 'success')
     {
-      const expires = new Date(dataUser.user.expired_date)
-      setLocalStorageUser(dataUser.user)
-      setCookieToken(dataUser.access_token, expires , setCookie)
-      navigate('/')
+      navigate('/login')
     }
       
   }, [dataUser])

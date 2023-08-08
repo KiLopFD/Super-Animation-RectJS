@@ -19,9 +19,9 @@ const CodeMonaCo = ({ submit, setRes, param, categories, options }) => {
         })
     }
     useEffect(() => {
-        if (refRes.current !== '' && lang === categories) {
+        if (refRes.current !== '') {
             // setCode(refRes.current)
-            postCode(categories, param, refRes.current, setRes, options)
+            postCode(categories=lang, param, refRes.current, setRes, options)
         }
     }, [submit])
 
