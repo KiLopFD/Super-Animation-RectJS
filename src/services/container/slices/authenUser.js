@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const vsCodeSlice = createSlice({
     name: 'vsCode',
     initialState: {
-        authen: false,
+        authen: true,
     },
     reducers: {
         checkAuthen: (state, valCheck) => {
