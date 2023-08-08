@@ -18,7 +18,7 @@ const Cpp = () => {
         setTimeout(() => {
             setLoading(1);
 
-        }, 500);
+        }, 1500);
         getLessons(param, categories, setData)
         if (refShow.current) {
             refShow.current.innerHTML = data["code"];
@@ -87,6 +87,7 @@ public:
 </div>
 <p className='mb-3'>Trong ví dụ này, chúng tôi đã đặt các thành viên dữ liệu <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>name</span> và <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>age</span> ở private và thêm các hàm thành viên công cộng setName và setAge để sửa đổi chúng. Bằng cách này, dữ liệu nội bộ của lớp Dog được bảo vệ và chỉ có thể truy cập thông qua các hàm được cung cấp.
 </p> */}
+
 
 </div>
                                 {/* End Edit Code */}

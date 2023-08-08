@@ -24,7 +24,7 @@ const TimeLine = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoading(1)
-        }, 5000);
+        }, 2000);
         getLessons('timeline', categories, setData)
     }, [loading])
     return (
