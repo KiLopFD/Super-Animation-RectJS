@@ -87,34 +87,6 @@ public:
 </div>
 <p className='mb-3'>Trong ví dụ này, chúng tôi đã đặt các thành viên dữ liệu <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>name</span> và <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>age</span> ở private và thêm các hàm thành viên công cộng setName và setAge để sửa đổi chúng. Bằng cách này, dữ liệu nội bộ của lớp Dog được bảo vệ và chỉ có thể truy cập thông qua các hàm được cung cấp.
 </p> */}
-<p className='text-4xl font-semibold font-sans mb-3'>Installing C++</p>
-<p className='mb-3'>Before you can start programming in C++, you will need to have a compiler installed on your system. A compiler is a program that converts the C++ code you write into an executable file that your computer can run. There are several popular C++ compilers to choose from, depending on your operating system and preference.</p>
-<p className='mb-3'>For Windows, one popular option is to install the <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>Microsoft Visual Studio IDE</span>, which includes the Microsoft Visual C++ compiler.</p>
-<ul className='list-disc pl-8'>
-    <li className='mb-3'>Download the installer from <span className='bg-gray-500 px-2 rounded-sm text-amber-300'>here.</span></li>
-    <div className="code my-5"><SyntaxHighlighter language="cpp" style={dracula}>{`class Dog {
-public:
-    std::string name;
-    int age;
-
-    void bark() {
-        std::cout << name << " barks!" << std::endl;
-    }
-};`}</SyntaxHighlighter></div>
-    <li className='mb-3'>Run the installer and select your desired architecture, version, and install location.</li> 
-</ul>
-
-<p className='text-2xl font-sans font-semibold my-5'>macOS</p>
-<p className='mb-3'>For macOS, you can install the Apple LLVM clang compiler which is part of the Xcode Command Line Tools. To do this, open a terminal and enter:</p>
-<div className="code my-5"><SyntaxHighlighter language="cpp" style={dracula}>{`class Dog {
-public:
-    std::string name;
-    int age;
-
-    void bark() {
-        std::cout << name << " barks!" << std::endl;
-    }
-};`}</SyntaxHighlighter></div>
 
 </div>
                                 {/* End Edit Code */}
