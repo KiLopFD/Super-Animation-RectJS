@@ -3,6 +3,8 @@ import { memo, useEffect, useRef, useState } from 'react';
 import { LangCode as file } from '../constant';
 import { postCode } from '../services/api/utils/postCode';
 import { useSelector } from 'react-redux';
+import { postCodeExpress } from '../services/api/utils/postCodeExpress';
+
 
 
 const CodeMonaCo = ({ submit, setRes, param, categories, options }) => {
@@ -22,6 +24,7 @@ const CodeMonaCo = ({ submit, setRes, param, categories, options }) => {
         if (refRes.current !== '') {
             // setCode(refRes.current)
             postCode(categories=lang, param, refRes.current, setRes, options)
+            // postCodeExpress(refRes.current, setRes)
         }
     }, [submit])
 
