@@ -3,7 +3,7 @@ import { AllRoutesPages } from './services/routes';
 
 function App() {
   // disable right click
-  // document.addEventListener('contextmenu', event => event.preventDefault());
+  document.addEventListener('contextmenu', event => event.preventDefault());
  
   // document.onkeydown = function (e) {
 

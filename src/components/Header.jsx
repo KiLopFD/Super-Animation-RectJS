@@ -3,31 +3,53 @@ import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { animate, motion as m } from "framer-motion";
 import { fadeIn, navVariants, slideIn, staggerContainer } from "../services/motion";
 import { memo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AvatarUser } from ".";
+import logo from '../assets/images/logo.jpg'
+import { postPrivatePages } from "../services/api/utils/postPrivatePages";
+import { useCookies } from "react-cookie";
+import { checkAuthen } from "../services/container/slices/authenUser";
+import DropDown from "./DropDown";
 
 
 const Header = ({ setMode, }) => {
-  let location = useLocation();
-  let [useFocus, setFocus] = useState('');
-  useMemo(() => {
+  const location = useLocation();
+  const [useFocus, setFocus] = useState('');
+  const [authen, setAuthen] = useState(false);
+  const _authen = useSelector((state) => {
+    return state.checkAuthen.authen
+  })
+  const [userCookie, setUserCookie] = useCookies(["token"])
+  const dispatch = useDispatch()
+  useEffect(() => {
     setFocus(location.pathname)
-  },[location.pathname])
+    if (location.pathname == '/' && _authen === false)
+    {
+      postPrivatePages(userCookie.token, dispatch, checkAuthen)
+    }
+  }, [location.pathname, _authen])
+
+  useEffect(()=>{
+    if (_authen === false)
+      setAuthen(_authen)
+  }, [_authen])
 
   // When Scroll, I Can Measure Height:
   // window.addEventListener('scroll', () => {
   //   console.log(window.pageYOffset)
   // })
   return <>
-    <div className="bg-blue-800 shadow-xl sticky left-0 top-0 z-50">
+    <div className="bg-blue-800 shadow-xl sticky left-0 top-0 z-40">
       <div className="header grid grid-cols-12 items-center px-2 sm:px-2 md:px-0 lg:px-0 container mx-auto">
-        <div className="block sm:block col-span-2 md:hidden lg:hidden">
-          drop
+        <div className="sm:block col-span-2 md:hidden lg:hidden flex justify-center">
+          <DropDown />
         </div>
         <m.div className="logo col-span-2 font-semibold font-sans text-xl"
           variants={fadeIn('down', 'spring', 0.5, 0.75)}
           initial='hidden'
           animate='show'
         >
-          <Link to='/' >Logo</Link>
+          <Link to='/' ><img className="h-12 w-12 rounded-full bg-cover object-contain" src={logo} alt="logo" /></Link>
         </m.div>
 
         <div className="col-span-6 justify-center sm:hidden lg:flex md:flex hidden">
@@ -151,22 +173,27 @@ const Header = ({ setMode, }) => {
           </m.div>
 
         </div>
-        <div className={"lg:col-span-4 md:col-span-4 sm:col-span-8 col-span-8 flex gap-3 justify-end font-semibold font-sans lg:text-xl md:text-xl sm:text-sm text-sm py-6"}>
-          <m.div
-            variants={fadeIn('down', 'spring', 1.15, 0.75)}
-            initial='hidden'
-            animate='show'
-          >
-            <button className="px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='log-in'>Đăng Nhập</Link></button>
-          </m.div>
-          <m.div
-            variants={fadeIn('down', 'spring', 1.15, 0.75)}
-            initial='hidden'
-            animate='show'
-          >
-            <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='/sign-up'>Đăng Kí</Link></button>
-          </m.div>
-          
+        <div className={`lg:col-span-4 md:col-span-4 sm:col-span-8 col-span-8 flex gap-3 font-semibold font-sans lg:text-xl md:text-xl sm:text-sm text-sm py-6`+` ${!authen ? 'justify-end': 'justify-end pr-5'}`}>
+          {!_authen ? (<>
+            <m.div
+              variants={fadeIn('down', 'spring', 1.15, 0.75)}
+              initial='hidden'
+              animate='show'
+            >
+              <button className="px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='log-in'>Đăng Nhập</Link></button>
+            </m.div>
+            <m.div
+              variants={fadeIn('down', 'spring', 1.15, 0.75)}
+              initial='hidden'
+              animate='show'
+            >
+              <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='/sign-up'>Đăng Kí</Link></button>
+            </m.div>
+          </>) : (<>
+            <div className="avatar-user relative z-50">
+              <AvatarUser />
+            </div>
+          </>)}
         </div>
       </div>
     </div>

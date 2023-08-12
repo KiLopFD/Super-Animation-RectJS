@@ -16,7 +16,7 @@ const Exercise = () => {
     setTimeout(() => {
       setLoading(1)
     }, 2000)
-    getImages('courses', setImages)
+    getImages('lang_program', setImages)
   }, [loading])
   return (
     <>
@@ -72,7 +72,7 @@ const Exercise = () => {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/exercise/${val["name"]}/list-chap`} state={{ categories: val["name"], param: "list-chap" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'>Vào Học</button>
                     </m.div>
                   </div>
                 </m.div>

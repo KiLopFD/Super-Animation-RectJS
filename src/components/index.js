@@ -18,6 +18,8 @@ const Reference = lazy(() => import("./PageCodeSubmit/Reference"));
 const Solution = lazy(() => import("./PageCodeSubmit/Solution"));
 const Submissions = lazy(() => import("./PageCodeSubmit/Submissions"));
 const NavSection = lazy(() => import("./PageCodeSubmit/NavSection"));
+const AvatarUser = lazy(() => import("./AvatarUser"));
+const DropDown = lazy(() => import("./DropDown"));
 
 export {
     Footer,
@@ -35,5 +37,6 @@ export {
     Reference,
     Solution,
     Submissions,
-    NavSection
+    NavSection,
+    AvatarUser
 }

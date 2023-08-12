@@ -8,6 +8,9 @@ import { setLocalStorageUser } from '../services/localStorage/infoUser'
 import { generateExpiresDate, setCookieToken } from '../services/cookie/cookieToken'
 import { useCookies } from 'react-cookie';
 import { postLogIn } from '../services/api/utils/postLogIn'
+import { useDispatch, useSelector } from 'react-redux'
+import { checkAuthen } from '../services/container/slices/authenUser'
+import { postPrivatePages } from '../services/api/utils/postPrivatePages'
 
 const Login = () => {
   // Navigate:
@@ -18,7 +21,10 @@ const Login = () => {
   const refName = useRef('')
   const [focusInput, setFocus] = useState("first")
   const [dataUser, setUser] = useState({})
-
+  const _authen = useSelector((state) => {
+    return state.checkAuthen.authen
+  })
+  const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault();
     const email_or_phone = e.target.elements.email_or_phone.value.trim();
@@ -37,6 +43,7 @@ const Login = () => {
       setLocalStorageUser(dataUser.user)
       setCookieToken(dataUser.access_token, expires , setCookie)
       navigate('/')
+      postPrivatePages(dataUser.access_token, dispatch, checkAuthen)
     }
     else{
       navigate('/log-in')

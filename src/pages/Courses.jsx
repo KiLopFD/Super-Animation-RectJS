@@ -17,8 +17,14 @@ function Courses() {
     setTimeout(() => {
       setLoading(1)
     }, 2000)
-    getImages('courses', setImages)
+    getImages('lang_program', setImages)
   }, [loading])
+  // useEffect(()=>{
+  //   console.log(images)
+  // }, [images])
+  // useEffect(()=>{
+  //   setLoading(0)
+  // }, [location.pathname])
   return (
     <>
       <div className={"Courses" + (location.pathname === '/courses' ? ' pt-10' : '')}>
@@ -29,11 +35,11 @@ function Courses() {
           )}
         </div>
 
-        <div className="wrap-content grid grid-cols-12 container mx-auto xl:gap-10 lg:gap-3 md:gap-3 sm:gap-0 gap-0 lg:px-0 md:px-0 sm:px-0 px-5">
+        <div className="wrap-content grid grid-cols-12 container mx-auto">
           {loading !== 0 && (location.pathname === '/courses' ? images.map((val, index) => {
             return (
-              <div key={index} className="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto"
+              <div key={index} className="xl:col-span-4 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 xl:mb-0 lg:mb-5 md:mb-5 sm:mb-5 mb-5 p-5">
+                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto min-h-[500px] w-full"
                   variants={fadeIn('up', 'tween', 0.5, 0.5)}
                   initial='hidden'
                   whileInView='show'
@@ -51,12 +57,15 @@ function Courses() {
                   </div>
                   <div className="wrap-content">
                     <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none'>
-                      <m.li className='mb-3' variants={textVariant(0.75)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Lý thuyết ngắn gọn, dễ học bao gồm hơn 20 bài.</m.li>
-                      <m.li className='mb-3' variants={textVariant(0.85)}
+                      {loading !== 0 && val.lesson.list_content.map((_val, _idx) => {
+                        return <m.li key={_idx+1} className='mb-3' variants={textVariant(0.75 + (_idx + 1) * 0.1)}
+                          initial='hidden'
+                          whileInView='show'
+                          viewport={{ once: true }}
+                        >{_val}</m.li>
+                      })}
+
+                      {/* <m.li className='mb-3' variants={textVariant(0.85)}
                         initial='hidden'
                         whileInView='show'
                         viewport={{ once: true }}
@@ -66,7 +75,7 @@ function Courses() {
                         initial='hidden'
                         whileInView='show'
                         viewport={{ once: true }}
-                      >Được hỏi bài mọi lúc mọi nơi luôn có sự giải đáp.</m.li>
+                      >Được hỏi bài mọi lúc mọi nơi luôn có sự giải đáp.</m.li> */}
                     </ul>
                     <m.div variants={textVariant(1)}
                       initial='hidden'
@@ -81,8 +90,8 @@ function Courses() {
             )
           }) : images.slice(0, 3).map((val, index) => {
             return (
-              <div key={index} className="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto"
+              <div key={index} className="xl:col-span-4 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 xl:mb-0 lg:mb-5 md:mb-5 sm:mb-5 mb-5 p-5">
+                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto min-h-[500px] w-full"
                   variants={fadeIn('up', 'tween', 0.5, 0.5)}
                   initial='hidden'
                   whileInView='show'
@@ -100,22 +109,13 @@ function Courses() {
                   </div>
                   <div className="wrap-content">
                     <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none'>
-                      <m.li className='mb-3' variants={textVariant(0.75)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Lý thuyết ngắn gọn, dễ học bao gồm hơn 20 bài.</m.li>
-                      <m.li className='mb-3' variants={textVariant(0.85)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Nội dung mới mẻ cách code trong phiên bản mới ngắn hơn hiệu quả hơn.</m.li>
-                      <m.li className='mb-3'
-                        variants={textVariant(0.95)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Được hỏi bài mọi lúc mọi nơi luôn có sự giải đáp.</m.li>
+                      {loading!==0 && val.lesson.list_content.map((_val, _idx) => {
+                        return <m.li key={_idx+1} className='mb-3' variants={textVariant(0.75 + (_idx + 1) * 0.1)}
+                          initial='hidden'
+                          whileInView='show'
+                          viewport={{ once: true }}
+                        >{_val}</m.li>
+                      })}
                     </ul>
                     <m.div variants={textVariant(1)}
                       initial='hidden'

@@ -49,38 +49,38 @@ const Routes = [
                 element: <Cpp />
               },
               // problem exercise
-              {
-                path: "exercise/:_lang",
-                element: <ListProblem />,
-                children: [
-                  {
-                    path:"list-all-questions",
-                    element:<ListQuestions/>
-                  }
-                ]
-              },
-              {
-                path: "code-submit/:_categories/:_params",
-                element: <CodeEvaluate />,
-                children:[
-                  {
-                    path:"description",
-                    element: <DescriptionProblem />
-                  },
-                  {
-                    path:"reference",
-                    element: <Reference />
-                  },
-                  {
-                    path:"solution",
-                    element: <Solution />
-                  },
-                  {
-                    path:"submissions",
-                    element: <Submissions />
-                  },
-                ]
-              }
+              // {
+              //   path: "exercise/:_lang",
+              //   element: <ListProblem />,
+              //   children: [
+              //     {
+              //       path:"list-all-questions",
+              //       element:<ListQuestions/>
+              //     }
+              //   ]
+              // },
+              // {
+              //   path: "code-submit/:_categories/:_params",
+              //   element: <CodeEvaluate />,
+              //   children:[
+              //     {
+              //       path:"description",
+              //       element: <DescriptionProblem />
+              //     },
+              //     {
+              //       path:"reference",
+              //       element: <Reference />
+              //     },
+              //     {
+              //       path:"solution",
+              //       element: <Solution />
+              //     },
+              //     {
+              //       path:"submissions",
+              //       element: <Submissions />
+              //     },
+              //   ]
+              // }
             ]
           }
         ]

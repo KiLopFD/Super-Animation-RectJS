@@ -17,15 +17,15 @@ const PrivateRoutes = () => {
   })
   const dispatch = useDispatch()
   useEffect(() => {
-    if (authen !== true)
+    if (authen !== true && userCookie.token)
       postPrivatePages(userCookie.token, dispatch, checkAuthen)
   }, [])
   
   useEffect(() => {
-    if (authen !== true)
+    if (authen !== true && userCookie.token)
       setTimeout(() => {
         setLoading(!loading)
-      }, 3000);
+      }, 1500);
     else
       setLoading(!loading)
   },[])
