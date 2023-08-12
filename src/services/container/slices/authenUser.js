@@ -10,7 +10,7 @@ const vsCodeSlice = createSlice({
             
             if (valCheck.payload.detail === 'success')
             {
-                console.log(valCheck.payload)
+                // console.log(valCheck.payload)
                 return {
                     authen: true 
                 }

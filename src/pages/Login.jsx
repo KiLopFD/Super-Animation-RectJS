@@ -34,7 +34,7 @@ const Login = () => {
       password: password
     }
     postLogIn(infoUser, setUser)
-    console.log(infoUser)
+    // console.log(infoUser)
   }
   useEffect(() => {
     if (dataUser.detail === 'success')

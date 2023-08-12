@@ -25,7 +25,7 @@ const Header = ({ setMode, }) => {
   //   console.log(window.pageYOffset)
   // })
   return <>
-    <div className="bg-blue-900 shadow-xl sticky left-0 top-0 z-40">
+    <div className="bg-blue-800 shadow-xl sticky left-0 top-0 z-40">
       <div className="header grid grid-cols-12 items-center px-2 sm:px-2 md:px-0 lg:px-0 container mx-auto">
         <div className="sm:block col-span-2 md:hidden lg:hidden flex justify-center">
           <DropDown />

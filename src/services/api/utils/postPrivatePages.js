@@ -11,9 +11,10 @@ export const postPrivatePages = async (token, dispatch, checkAuthen) => {
         }
     }).then(async (res) => {
         const data = await res.data
-        console.log(data)
+        // console.log(data)
         dispatch(checkAuthen(data))
     }).catch((err) => {
+        dispatch(checkAuthen({detail:'false'}))
         console.error(err)
     })
 }
