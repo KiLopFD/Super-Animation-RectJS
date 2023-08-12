@@ -14,9 +14,6 @@ function Courses() {
   const [loading, setLoading] = useState(0);
   const refShow = useRef(null | HTMLDivElement);
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(1)
-    }, 2000)
     getImages('lang_program', setImages)
   }, [loading])
   // useEffect(()=>{
@@ -25,6 +22,10 @@ function Courses() {
   // useEffect(()=>{
   //   setLoading(0)
   // }, [location.pathname])
+  useEffect(()=>{
+    if (images !== null)
+      setLoading(1)
+  }, [images])
   return (
     <>
       <div className={"Courses" + (location.pathname === '/courses' ? ' pt-10' : '')}>
