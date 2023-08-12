@@ -13,33 +13,19 @@ import DropDown from "./DropDown";
 
 
 const Header = ({ setMode, }) => {
+  
   const location = useLocation();
   const [useFocus, setFocus] = useState('');
-  const [authen, setAuthen] = useState(false);
-  const _authen = useSelector((state) => {
-    return state.checkAuthen.authen
-  })
-  const [userCookie, setUserCookie] = useCookies(["token"])
-  const dispatch = useDispatch()
+  
   useEffect(() => {
     setFocus(location.pathname)
-    if (location.pathname == '/' && _authen === false)
-    {
-      postPrivatePages(userCookie.token, dispatch, checkAuthen)
-    }
-  }, [location.pathname, _authen])
-
-  useEffect(()=>{
-    if (_authen === false)
-      setAuthen(_authen)
-  }, [_authen])
-
+  }, [location.pathname])
   // When Scroll, I Can Measure Height:
   // window.addEventListener('scroll', () => {
   //   console.log(window.pageYOffset)
   // })
   return <>
-    <div className="bg-blue-800 shadow-xl sticky left-0 top-0 z-40">
+    <div className="bg-blue-900 shadow-xl sticky left-0 top-0 z-40">
       <div className="header grid grid-cols-12 items-center px-2 sm:px-2 md:px-0 lg:px-0 container mx-auto">
         <div className="sm:block col-span-2 md:hidden lg:hidden flex justify-center">
           <DropDown />
@@ -173,27 +159,8 @@ const Header = ({ setMode, }) => {
           </m.div>
 
         </div>
-        <div className={`lg:col-span-4 md:col-span-4 sm:col-span-8 col-span-8 flex gap-3 font-semibold font-sans lg:text-xl md:text-xl sm:text-sm text-sm py-6`+` ${!authen ? 'justify-end': 'justify-end pr-5'}`}>
-          {!_authen ? (<>
-            <m.div
-              variants={fadeIn('down', 'spring', 1.15, 0.75)}
-              initial='hidden'
-              animate='show'
-            >
-              <button className="px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='log-in'>Đăng Nhập</Link></button>
-            </m.div>
-            <m.div
-              variants={fadeIn('down', 'spring', 1.15, 0.75)}
-              initial='hidden'
-              animate='show'
-            >
-              <button className="border-cyan-400 border-2 px-4 py-3 rounded-2xl hover:scale-110 hover:duration-300 hover:border-amber-400"><Link to='/sign-up'>Đăng Kí</Link></button>
-            </m.div>
-          </>) : (<>
-            <div className="avatar-user relative z-50">
-              <AvatarUser />
-            </div>
-          </>)}
+        <div className={`lg:col-span-4 md:col-span-4 sm:col-span-8 col-span-8 flex gap-3 font-semibold font-sans lg:text-xl md:text-xl sm:text-sm text-sm py-6 justify-end pr-5`}>
+          <AvatarUser/>
         </div>
       </div>
     </div>

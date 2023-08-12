@@ -32,8 +32,8 @@ const Exercise = () => {
         <div className="wrap-content grid grid-cols-12 container mx-auto xl:gap-10 lg:gap-3 md:gap-3 sm:gap-0 gap-0 lg:px-0 md:px-0 sm:px-0 px-5">
           {loading !== 0 && (location.pathname === '/exercise' ? images.map((val, index) => {
             return (
-              <div key={index} className="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto"
+              <div key={index} className="xl:col-span-4 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 xl:mb-0 lg:mb-5 md:mb-5 sm:mb-5 mb-5 p-5">
+                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto min-h-[500px] w-full"
                   variants={fadeIn('up', 'tween', 0.5, 0.5)}
                   initial='hidden'
                   whileInView='show'
@@ -81,8 +81,8 @@ const Exercise = () => {
             )
           }) : images.slice(0, 3).map((val, index) => {
             return (
-              <div key={index} className="lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12 lg:mb-0 md:mb-0 sm:mb-5 mb-5">
-                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto"
+              <div key={index} className="xl:col-span-4 lg:col-span-6 md:col-span-12 sm:col-span-12 col-span-12 xl:mb-0 lg:mb-5 md:mb-5 sm:mb-5 mb-5 p-5">
+                <m.div className="lg:flex-row md:flex-row sm:flex-row flex-col inner-wrap border-2 p-3 rounded-2xl flex items-center lg:gap-10 md:gap-10 sm:gap-10 gap-0 lg:aspect-square md:aspect-square sm:aspect-auto aspect-auto min-h-[500px] w-full"
                   variants={fadeIn('up', 'tween', 0.5, 0.5)}
                   initial='hidden'
                   whileInView='show'
