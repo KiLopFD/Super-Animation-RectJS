@@ -19,7 +19,7 @@ const Layout = () => {
 
   return (
     <>
-      <div style={{ background: stateMode === 'light' ? '#183250' : '#0F172A' }} className='h-full w-full relative'>
+      <div className='h-full w-full relative'>
         <div className="relative">
           <Suspense fallback={<div>Loading...</div>}>
             <Header setMode={setMode} className='grid-col-8' />

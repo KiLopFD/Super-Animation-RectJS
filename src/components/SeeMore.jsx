@@ -21,6 +21,7 @@ const SeeMore = ({ linkTo }) => {
                       variants={fadeIn('left', 'tween', 0.5, 4)}
                       initial='hidden'
                       whileInView='show'
+                      viewport={{once:true}}
                   ></m.div>
               </button>
           </div>

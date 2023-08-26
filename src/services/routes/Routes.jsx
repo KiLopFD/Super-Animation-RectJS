@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import PrivateRoutes from "../../components/PrivateRoutes";
-import { Layout, About, Contact, Courses, Home, Login, Logout, SignUp, DetailCourses, Cpp, Exercise, CodeEvaluate, ListProblem, ListQuestions } from "../../pages";
-import { DescriptionProblem, Reference, Solution, Submissions } from "../../components";
+import { Layout, About, Contact, Courses, Home, Login, SignUp, DetailCourses, Lessons, Exercise} from "../../pages";
+import { TimeLine } from "../../components";
 
 
 const Routes = [
@@ -45,9 +45,18 @@ const Routes = [
             children: [
               // lesson
               {
-                path: "lesson/:_lang/:_params",
-                element: <Cpp />
+                index: true,
+                path:"lesson/:_lang/timeline",
+                element: <TimeLine/>
               },
+              {
+                path: "lesson/:_lang/:_params",
+                element: <Lessons />
+              },
+              {
+                path:"*",
+                element:<Navigate to={'/'}/>
+              }
               // problem exercise
               // {
               //   path: "exercise/:_lang",
@@ -82,6 +91,10 @@ const Routes = [
               //   ]
               // }
             ]
+          },
+          {
+            path:"*",
+            element: <Navigate to={'/'}/>
           }
         ]
       },

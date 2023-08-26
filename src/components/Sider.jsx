@@ -37,10 +37,10 @@ import { getLessons } from '../services/api/utils/getLesson';
 import { motion as m } from 'framer-motion';
 import { slideIn } from '../services/motion';
 import { getEx } from '../services/api/utils/getEx';
-const Sider = ({ method }) => {
+const Sider = () => {
   // set up state:
   const location = useLocation();
-  const { categories, param } = location.state
+  const { categories, param, lesson_done } = location.state
   const [open, setOpen] = useState(0);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -51,16 +51,14 @@ const Sider = ({ method }) => {
   // call api:
   const [data, setData] = useState([]);
   useEffect(() => {
-    if (method === 'lesson')
-      getLessons('timeline', categories, setData)
-    else getEx('list-chap', categories, setData)
+    getLessons('timeline', categories, setData)
   }, [])
   // end call api
 
   return (
     <>
       <div className={`z-10 absolute top-0 left-0 h-full w-full backdrop-blur-sm blur-sm ${openSider === 0 ? 'hidden' : 'block'}`}></div>
-      <Card className={`h-auto w-m-max lg:w-[25rem] ${openSider === 0 ? 'w-[4rem] duration-300 transition-all ease-out' : 'w-[25rem] duration-300 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
+      <Card className={`h-auto w-m-max lg:w-[40rem] ${openSider === 0 ? 'w-[4rem] duration-300 transition-all ease-out' : 'w-[25rem] duration-300 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
         <div className='relative top-0 -left-10 px-0 py-2 bg-blue-600 rounded-full shadow-lg w-fit lg:hidden block'>
           <Button onClick={() => {
             if (openSider === 0)
@@ -72,11 +70,10 @@ const Sider = ({ method }) => {
         </div>
 
 
-        <div className="mb-2 flex items-center gap-4 py-2">
-          <p>C++</p>
+        <div className="mb-2 flex items-center gap-4 py-2 bg-blue-800 px-2 rounded-lg">
+          {/* <p>C++</p> */}
           <Typography className={`lg:text-2xl md:text-2xl text-sm font-sans font-bold lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
-            {/* <Link to='/lesson/cpp/chap-0-1'></Link> */}
-            {method === 'lesson' ? 'Danh sách bài học' : 'Danh sách bài tập'}
+            Danh sách bài học
           </Typography>
         </div>
         <List className='p-0'>
@@ -99,7 +96,7 @@ const Sider = ({ method }) => {
                     </ListItemPrefix>
                     <Typography color="blue-gray" className={`lg:text-2xl md:text-2xl text-sm text-start pl-2 mr-auto font-normal lg:block ${(openSider === 0) ? 'hidden' : 'block'}`}>
                       {/* <Link to={`/${method}/${categories}/${val["param"]}`} state={{categories:categories, param:val["param"]}}></Link> */}
-                      {method === 'exercise' ? val["title"] : (<Link to={`/${method}/${categories}/${val["param"]}`} state={{ categories: categories, param: val["param"] }}>{val["title"]}</Link>)}
+                      <Link to={`/lesson/${categories}/${val["param"]}`} state={{ categories: categories, param: val["param"], lesson_done: lesson_done }}>{val["title"]}</Link>
                     </Typography>
                   </AccordionHeader>
                 </ListItem>
@@ -112,7 +109,7 @@ const Sider = ({ method }) => {
                             <CodeBracketIcon strokeWidth={3} className="h-5 w-5 ml-3 mr-2 hidden sm:block md:block lg:block" />
                           </ListItemPrefix>
                           <Typography className='lg:text-2xl md:text-2xl text-sm'>
-                            <Link to={method === 'exercise' ? `/code-submit/${method}/${_val.param}/description` : `lesson/${categories}/${_val.param}`} state={{ categories: categories, param: _val["param"] }}>{_val["title"]}</Link>
+                            <Link to={`lesson/${categories}/${_val.param}`} state={{ categories: categories, param: _val["param"], lesson_done: lesson_done}}>{_val["title"]}</Link>
                           </Typography>
 
                         </ListItem>

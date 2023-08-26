@@ -10,6 +10,7 @@ const SlideTitle = ({nameTitle}) => {
               variants={slideIn('left', 'tween', 0.25, 0.75)}
               initial='hidden'
               whileInView='show'
+              viewport={{once:true}}
           >
               <div className="inner-wrap flex justify-start items-center pl-10">
                   <svg className='stroke-2' width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">

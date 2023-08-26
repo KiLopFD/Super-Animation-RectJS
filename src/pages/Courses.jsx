@@ -16,12 +16,6 @@ function Courses() {
   useEffect(() => {
     getImages('lang_program', setImages)
   }, [loading])
-  // useEffect(()=>{
-  //   console.log(images)
-  // }, [images])
-  // useEffect(()=>{
-  //   setLoading(0)
-  // }, [location.pathname])
   useEffect(()=>{
     if (images !== null)
       setLoading(1)
@@ -57,7 +51,7 @@ function Courses() {
                     </m.svg>
                   </div>
                   <div className="wrap-content">
-                    <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none'>
+                    <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none min-h-[300px]'>
                       {loading !== 0 && val.lesson.list_content.map((_val, _idx) => {
                         return <m.li key={_idx+1} className='mb-3' variants={textVariant(0.75 + (_idx + 1) * 0.1)}
                           initial='hidden'
@@ -65,25 +59,13 @@ function Courses() {
                           viewport={{ once: true }}
                         >{_val}</m.li>
                       })}
-
-                      {/* <m.li className='mb-3' variants={textVariant(0.85)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Nội dung mới mẻ cách code trong phiên bản mới ngắn hơn hiệu quả hơn.</m.li>
-                      <m.li className='mb-3'
-                        variants={textVariant(0.95)}
-                        initial='hidden'
-                        whileInView='show'
-                        viewport={{ once: true }}
-                      >Được hỏi bài mọi lúc mọi nơi luôn có sự giải đáp.</m.li> */}
                     </ul>
                     <m.div variants={textVariant(1)}
                       initial='hidden'
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val.name, param: "timeline", lesson_done: val.lesson_done }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>
@@ -109,7 +91,7 @@ function Courses() {
                     </m.svg>
                   </div>
                   <div className="wrap-content">
-                    <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none'>
+                    <ul className='font-sans lg:list-disc md:list-disc sm:list-disc list-none min-h-[250px] overflow-auto'>
                       {loading!==0 && val.lesson.list_content.map((_val, _idx) => {
                         return <m.li key={_idx+1} className='mb-3' variants={textVariant(0.75 + (_idx + 1) * 0.1)}
                           initial='hidden'
@@ -123,7 +105,7 @@ function Courses() {
                       whileInView='show'
                       viewport={{ once: true }}
                     >
-                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val["name"], param: "timeline" }} >Vào Học</Link></button>
+                      <button className='mt-14 block mx-auto min-w-max p-5 text-3xl border-4 border-cyan-300 duration-150 hover:border-amber-300 hover:scale-110 rounded-2xl'><Link to={`/lesson/${val.name}/timeline`} state={{ categories: val["name"], param: "timeline", lesson_done: val.lesson_done }} >Vào Học</Link></button>
                     </m.div>
                   </div>
                 </m.div>
