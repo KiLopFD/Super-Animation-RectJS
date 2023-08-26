@@ -30,24 +30,24 @@ const DropDown = () => {
 
                 </div>
             </MenuHandler>
-            <MenuList className='relative z-50 min-w-[150px]'>
-                <MenuItem className="flex items-center gap-2">
+            <MenuList className='relative z-50 min-w-[150px] rounded-lg bg-blue-700'>
+                <MenuItem className="flex items-center gap-2 py-1 hover:bg-blue-900 transition-all duration-500 bg-inherit rounded-lg ease-in-out">
 
                     <Typography className="font-normal">
                         <Link to={'/'}>Trang chủ</Link>
                     </Typography>
                 </MenuItem>
-                <MenuItem className="flex items-center gap-2">
+                <MenuItem className="flex items-center gap-2 py-1 hover:bg-blue-900 transition-all duration-500 bg-inherit rounded-lg ease-in-out">
                     <Typography className="font-normal">
                         <Link to={'/courses'}>Khóa học</Link>
                     </Typography>
                 </MenuItem>
-                <MenuItem className="flex items-center gap-2">
+                <MenuItem className="flex items-center gap-2 py-1 hover:bg-blue-900 transition-all duration-500 bg-inherit rounded-lg ease-in-out">
                     <Typography className="font-normal">
                         <Link to={'/about'}>Giới Thiệu</Link>
                     </Typography>
                 </MenuItem>
-                <MenuItem className="flex items-center gap-2">
+                <MenuItem className="flex items-center gap-2 py-1 hover:bg-blue-900 transition-all duration-500 bg-inherit rounded-lg ease-in-out">
                     <Typography className="font-normal">
                         <Link to={'/contact'}>Liên hệ</Link>
                     </Typography>

@@ -9,11 +9,12 @@ const api_url = 'api'
 //     return data
 // }
 
-export const getImages = async (params, setData) => {
+export const getImages = async (params, setData, setLoading) => {
     domain.get(`${api_url}/images/${params}`)
         .then(async (res) => {
             const data = await res.data
             setData(data);
+            setLoading(1);
         })
         .catch((err) => {
             console.log(err);

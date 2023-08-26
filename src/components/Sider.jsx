@@ -42,6 +42,7 @@ const Sider = () => {
   const location = useLocation();
   const { categories, param, lesson_done } = location.state
   const [open, setOpen] = useState(0);
+  const [loading, setLoading] = useState(0);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
@@ -51,14 +52,15 @@ const Sider = () => {
   // call api:
   const [data, setData] = useState([]);
   useEffect(() => {
-    getLessons('timeline', categories, setData)
+    if (loading === 0)
+      getLessons('timeline', categories, setData, setLoading)
   }, [])
   // end call api
 
   return (
     <>
       <div className={`z-10 absolute top-0 left-0 h-full w-full backdrop-blur-sm blur-sm ${openSider === 0 ? 'hidden' : 'block'}`}></div>
-      <Card className={`h-auto w-m-max lg:w-[40rem] ${openSider === 0 ? 'w-[4rem] duration-300 transition-all ease-out' : 'w-[25rem] duration-300 transition-all'} p-4 bg-blue-700 mt-10 relative z-20`}>
+      <Card className={`h-auto w-m-max lg:w-[40rem] ${openSider === 0 ? 'w-[4rem] duration-500 transition-all ease-linear' : 'w-[25rem] duration-500 transition-all ease-linear'} p-4 bg-blue-700 mt-10 relative z-20`}>
         <div className='relative top-0 -left-10 px-0 py-2 bg-blue-600 rounded-full shadow-lg w-fit lg:hidden block'>
           <Button onClick={() => {
             if (openSider === 0)

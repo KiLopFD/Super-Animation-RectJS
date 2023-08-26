@@ -12,6 +12,7 @@ const SeeMore = lazy(() => import("./SeeMore"));
 
 const AvatarUser = lazy(() => import("./AvatarUser"));
 const DropDown = lazy(() => import("./DropDown"));
+const Ads = lazy(() => import("./Ads"));
 
 export {
     Footer,
@@ -21,5 +22,6 @@ export {
     TimeLine,
     SlideTitle,
     SeeMore,
-    AvatarUser
+    AvatarUser,
+    Ads
 }
